@@ -1,1 +1,305 @@
+What is K-Means?
 
+K-Means is an unsupervised machine learning algorithm used to divide data into a specified number of groups called clusters.
+
+For customer segmentation, customers having similar characteristics are placed into the same cluster.
+
+For example:
+
+              Customers
+                  ↓
+             K-Means
+                  ↓
+       ┌──────────┼──────────┐
+       ↓          ↓          ↓
+    Cluster 1  Cluster 2  Cluster 3
+       ↓          ↓          ↓
+    Similar    Similar    Similar
+   Customers  Customers  Customers
+
+Customer segmentation helps businesses create targeted marketing campaigns, improve engagement, and provide better recommendations.
+
+How K-Means Works
+
+Suppose we choose:
+
+$$ K = 3 $$
+Step 1 — Choose K
+
+Select the number of clusters.
+
+Example:
+
+K = 3
+Step 2 — Initialize centroids
+
+K-Means initially chooses 3 centroid points.
+
+Step 3 — Assign data points
+
+Each customer is assigned to the nearest centroid, usually using Euclidean distance.
+
+Step 4 — Recalculate centroids
+
+The center of each cluster is calculated again based on its assigned customers.
+
+Step 5 — Repeat
+
+Customers are reassigned and centroids are recalculated until the assignments stabilize or the algorithm reaches its stopping condition.
+
+Simple flow
+Choose K
+   ↓
+Initialize Centroids
+   ↓
+Assign Customers
+   ↓
+Calculate New Centroids
+   ↓
+Repeat
+   ↓
+Final Customer Clusters
+Part C — Questions and Answers
+Q1. What is clustering? How does it differ from classification?
+Clustering
+
+Clustering is an unsupervised machine learning technique that groups similar data points together without predefined labels.
+
+Example:
+
+Customer Data
+      ↓
+   Clustering
+      ↓
+ ┌────┼────┐
+ C1   C2   C3
+Classification
+
+Classification is a supervised learning technique that assigns data to predefined classes using labeled training data.
+
+Difference
+Clustering	Classification
+Unsupervised learning	Supervised learning
+No predefined labels	Uses predefined labels
+Discovers groups	Predicts known classes
+Example: Customer segments	Example: Spam/Not Spam
+Q2. Explain the working principle of K-Means Clustering.
+
+K-Means works by dividing data into K clusters.
+
+The basic process is:
+
+Select the value of K.
+Initialize K centroids.
+Calculate the distance between each data point and each centroid.
+Assign every point to its nearest centroid.
+Recalculate the centroid of every cluster.
+Repeat the assignment and centroid calculation.
+Stop when the clusters become stable.
+
+The objective is to create clusters where points within the same cluster are relatively similar.
+
+Q3. Why is feature scaling important before applying K-Means clustering?
+
+Feature scaling is important because K-Means uses distance calculations.
+
+Suppose we have:
+
+Age             → 18–70
+Annual Income   → 15–150
+
+Annual Income has a much larger numerical range than Age.
+
+Without scaling, the larger-scale feature can have a greater influence on the distance calculation.
+
+Scaling:
+Original Features
+       ↓
+ StandardScaler
+       ↓
+Similar numerical scale
+       ↓
+K-Means
+
+Therefore, scaling helps ensure that features contribute more fairly to clustering.
+
+The experiment specifically instructs students to normalize or standardize selected features before clustering.
+
+Q4. What is the Elbow Method, and how does it help determine the optimal number of clusters?
+
+The Elbow Method is used to help select an appropriate value of K.
+
+It calculates the inertia for different numbers of clusters.
+
+Inertia represents the within-cluster sum of squared distances from data points to their cluster centroid.
+
+We plot:
+
+K → Number of clusters
+Y → Inertia
+
+Example:
+
+Inertia
+  |
+  |\
+  | \
+  |  \
+  |   \__
+  |      \__
+  |         \___
+  +----------------
+     1  2  3  4  5
+          ↑
+       Elbow
+
+The point where the reduction in inertia starts becoming less significant is called the elbow.
+
+That value is considered a candidate for K.
+
+The experiment recommends using the Elbow Method and validating the selected result with the Silhouette Score.
+
+Q5. What is the Silhouette Score?
+
+The Silhouette Score measures how well data points fit within their assigned clusters compared with other clusters.
+
+Its value generally ranges from:
+
+$$ -1 \text{ to } +1 $$
+Interpretation:
+Score	Meaning
+Close to +1	Well-separated clusters
+Around 0	Overlapping clusters
+Negative	Points may be assigned to inappropriate clusters
+
+A higher Silhouette Score generally indicates better-defined clustering.
+
+It can be used along with the Elbow Method to select and validate K.
+
+Q6. Why is K-Means considered an unsupervised machine learning algorithm?
+
+K-Means is considered unsupervised because it does not require predefined output labels.
+
+For example, suppose we have:
+
+Age
+Income
+Spending Score
+
+but we don't already know which customers belong to which group.
+
+K-Means automatically discovers groups based on similarities in the data.
+
+Supervised:
+Input → Known Label → Learn
+Unsupervised:
+Input → Discover Patterns/Groups
+Q7. Mention any four real-world applications of customer segmentation.
+
+Four applications are:
+
+1. Targeted Marketing
+
+Businesses can send different marketing campaigns to different customer groups.
+
+2. Personalized Recommendations
+
+Products can be recommended according to customer behavior.
+
+3. Customer Retention
+
+Businesses can identify valuable or potentially disengaged customer segments and design appropriate retention strategies.
+
+4. Product Planning
+
+Companies can understand different customer groups and develop products according to their needs.
+
+Other applications include:
+
+Pricing strategies
+Customer relationship management
+Advertising
+Loyalty programs
+
+These uses align with the experiment's purpose of targeted marketing, customer engagement, and product recommendations.
+
+Q8. What are the limitations of the K-Means algorithm?
+
+Important limitations include:
+
+1. Need to select K
+
+The number of clusters must be chosen beforehand.
+
+2. Sensitive to initialization
+
+Different initial centroids can sometimes produce different results.
+
+3. Sensitive to outliers
+
+Extreme data points can affect cluster centroids.
+
+4. Sensitive to feature scaling
+
+Features with larger scales can dominate distance calculations.
+
+5. Assumes cluster structure suitable for centroid-based grouping
+
+K-Means works best when clusters are reasonably compact and separable according to the distance measure.
+
+6. Not ideal for every data type
+
+Standard K-Means is designed for numerical features and distance-based grouping.
+
+Q9. How can businesses use customer segmentation to improve marketing and customer retention?
+
+Businesses can divide customers into groups based on:
+
+Income
+Age
+Spending behavior
+Purchase frequency
+Purchasing patterns
+
+Then they can create strategies for each group.
+
+Example:
+Customer Group	Possible Strategy
+High income + high spending	Premium offers
+High income + low spending	Personalized promotions
+Low income + high spending	Discounts and loyalty rewards
+Low income + low spending	Cost-effective offers
+
+This allows companies to avoid treating every customer in exactly the same way.
+
+As a result, segmentation can support targeted marketing, better customer engagement, personalized recommendations, and retention strategies.
+
+Q10. Compare K-Means Clustering with Hierarchical Clustering.
+K-Means	Hierarchical Clustering
+Divides data into K clusters	Builds a hierarchy of clusters
+K must generally be selected	Does not require K in the same way initially
+Uses centroids	Uses distances between observations/clusters
+Iterative algorithm	Produces a hierarchical structure
+Generally efficient for larger datasets	Can become computationally expensive for large datasets
+Results can depend on initialization	Typically does not use random centroid initialization
+Useful for customer segmentation	Useful when hierarchical relationships are important
+K-Means
+Data
+ ↓
+Choose K
+ ↓
+Centroids
+ ↓
+Clusters
+Hierarchical
+Individual Points
+       ↓
+Merge Similar Points
+       ↓
+Build Hierarchy
+       ↓
+Dendrogram
+       ↓
+Choose Clusters
+
+K-Means is particularly useful when you want a specific number of customer groups, while hierarchical clustering is useful when you want to examine the nested relationships between groups.
